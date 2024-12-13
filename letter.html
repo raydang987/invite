@@ -17,31 +17,86 @@
         </div>
     </div>
 
-    <button class="svg-button" id="svgButton" style="display: none;" onclick="goToPage()">
-        <svg height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 0H24V24H0z" fill="none"></path>
-            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
-        </svg>
-    </button>
+    <div class="switch-container" id="switchContainer" style="display: none;">
+        <label class="switch">
+            <input type="checkbox" id="switchToggle" onclick="handleSwitch()" />
+            <span class="slider">
+                <span class="title" id="switchTitle">Sài Gòn</span>
+                <span class="ball">
+                    <span class="icon">
+                        <svg
+                            class="w-6 h-6 text-gray-800 dark:text-white"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="25"
+                            height="25"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M8 18V6l8 6-8 6Z"
+                            ></path>
+                        </svg>
+                    </span>
+                </span>
+            </span>
+        </label>
+    </div>
 
     <script>
         function openLetter() {
             const letter = document.querySelector('.letter');
             const insideLetter = document.getElementById('insideLetter');
-            const svgButton = document.getElementById('svgButton');
+            const switchContainer = document.getElementById('switchContainer');
 
-          
             letter.classList.add('open');
-            
+
             setTimeout(() => {
                 insideLetter.innerHTML = '';
-                insideLetter.appendChild(svgButton);
-                svgButton.style.display = 'inline-block';
+                insideLetter.appendChild(switchContainer);
+                switchContainer.style.display = 'block';
+
+                // Khôi phục trạng thái switch từ LocalStorage
+                restoreSwitchState();
             }, 600);
         }
 
-        function goToPage() {
-            window.location.href = 'co.html';
+        function handleSwitch() {
+            const switchToggle = document.getElementById('switchToggle');
+            const switchTitle = document.getElementById('switchTitle');
+
+            if (switchToggle.checked) {
+                // Khi bật: Cập nhật chữ và lưu trạng thái
+                switchTitle.textContent = 'Đà Lạt';
+                localStorage.setItem('switchState', 'on');
+
+                // Chuyển đến trang mới
+                setTimeout(() => {
+                    window.location.href = 'co.html'; // Chuyển trang sau khi bật
+                }, 500); // Delay 0.5 giây để người dùng thấy sự thay đổi
+            } else {
+                // Khi tắt: Cập nhật chữ và lưu trạng thái
+                switchTitle.textContent = 'Sài Gòn';
+                localStorage.setItem('switchState', 'off');
+            }
+        }
+
+        function restoreSwitchState() {
+            const switchToggle = document.getElementById('switchToggle');
+            const switchTitle = document.getElementById('switchTitle');
+            const savedState = localStorage.getItem('switchState');
+
+            if (savedState === 'on') {
+                switchToggle.checked = true;
+                switchTitle.textContent = 'Đà Lạt';
+            } else {
+                switchToggle.checked = false;
+                switchTitle.textContent = 'Sài Gòn';
+            }
         }
     </script>
 </body>
