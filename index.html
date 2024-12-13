@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hi Em Bé</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Hi Em Bé</h1>
+    <p>Em Bé có rảnh ngày 29 tháng 12 đến ngày 1 tháng 1 không?</p>
+    <p>Nếu có thì mình cùng lên kế hoạch gì đó nhé <span style="color: red;">❤️</span></p>
+
+    <div class="response">
+      <label>
+        <input type="radio" name="availability" value="yes">
+        Có
+      </label>
+      <label>
+        <input type="radio" name="availability" value="no">
+        Không
+      </label>
+    </div>
+    <button class="confirm-btn" onclick="checkAndRedirect()">Xác nhận</button>
+  </div>
+
+  <script>
+    function checkAndRedirect() {
+        var selectedOption = document.querySelector('input[name="availability"]:checked');
+
+        if (selectedOption) {
+            if (selectedOption.value === 'yes') {
+                window.location.href = "co.html";
+            } else {
+                window.location.href = "khong.html";
+            }
+        } else {
+            alert("Vui lòng chọn một lựa chọn.");
+        }
+    }
+  </script>
+</body>
+</html>
