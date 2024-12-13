@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lá Thư</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="letter-container" onclick="openLetter()">
+        <div class="letter">
+            <div class="front">
+                <h1>Bấm vào để mở thư</h1>
+            </div>
+            <div class="inside" id="insideLetter">
+            </div>
+        </div>
+    </div>
+
+    <button class="svg-button" id="svgButton" style="display: none;" onclick="goToPage()">
+        <svg height="32" width="32" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0H24V24H0z" fill="none"></path>
+            <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+        </svg>
+    </button>
+
+    <script>
+        function openLetter() {
+            const letter = document.querySelector('.letter');
+            const insideLetter = document.getElementById('insideLetter');
+            const svgButton = document.getElementById('svgButton');
+
+          
+            letter.classList.add('open');
+            
+            setTimeout(() => {
+                insideLetter.innerHTML = '';
+                insideLetter.appendChild(svgButton);
+                svgButton.style.display = 'inline-block';
+            }, 600);
+        }
+
+        function goToPage() {
+            window.location.href = 'co.html';
+        }
+    </script>
+</body>
+</html>

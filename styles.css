@@ -59,6 +59,8 @@ input[type="radio"] {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center; 
+    display: inline-block; 
 }
 
 .confirm-btn:hover {
@@ -95,4 +97,153 @@ textarea {
     color: #f28ca5;
     margin-top: 20px;
 }
+.highlight {
+    color: #d22d2d; /* Màu đỏ để làm nổi bật */
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #ffe6e6; /* Màu nền nhẹ cho dòng nhấn mạnh */
+    padding: 2px 4px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.signature {
+    margin-top: 30px;
+    text-align: right; /* Căn phải chữ ký */
+    font-family: 'Pacifico', cursive; /* Font chữ ký mềm mại (bạn cần tải font Pacifico hoặc chọn font khác nếu không hỗ trợ) */
+    color: #f28ca5; /* Màu chữ ký hồng pastel */
+}
 
+.signature .name {
+    font-size: 1.5rem; /* Tăng kích thước chữ ký */
+    margin-top: 5px;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fce9d1;
+}
+
+.letter-container {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px; /* Tạo hiệu ứng 3D */
+    cursor: pointer;
+}
+
+.letter {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.5s ease; /* Thời gian và hiệu ứng khi mở */
+}
+
+.letter.open {
+    transform: rotateX(-180deg); /* Hiệu ứng mở thư */
+}
+
+.letter .front,
+.letter .inside {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Ẩn mặt sau khi chưa xoay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #f28ca5;
+    border-radius: 10px;
+    background-color: #fff0f5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.letter .front {
+    background-color: #f28ca5; /* Màu hồng cho mặt trước */
+    color: #fff;
+}
+
+.letter .inside {
+    transform: rotateX(180deg); /* Mặt trong xoay 180 độ để ẩn */
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+ 
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 22px 20px 22px;
+    box-shadow: rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    background-color: #e8e8e8;
+    border-color: #ffe2e2;
+    border-style: solid;
+    border-width: 9px;
+    border-radius: 35px;
+    transition: transform 400ms cubic-bezier(.68,-0.55,.27,2.5), 
+    border-color 400ms ease-in-out,
+    background-color 400ms ease-in-out;
+    word-spacing: -2px;
+  }
+  
+  @keyframes movingBorders {
+    0% {
+      border-color: #fce4e4;
+    }
+  
+    50% {
+      border-color: #ffd8d8;
+    }
+  
+    90% {
+      border-color: #fce4e4;
+    }
+  }
+  
+  button:hover {
+    background-color: #eee;
+    transform: scale(105%);
+    animation: movingBorders 3s infinite;
+  }
+  
+  button svg {
+    fill: rgb(255, 110, 110);
+  }
+  
+  @keyframes beatingHeart {
+    0% {
+      transform: scale(1);
+    }
+  
+    15% {
+      transform: scale(1.15);
+    }
+  
+    30% {
+      transform: scale(1);
+    }
+  
+    45% {
+      transform: scale(1.15);
+    }
+  
+    60% {
+      transform: scale(1);
+    }
+  }
+  
+  button:hover svg {
+    transform: scale(105%);
+    border-color: #ffd8d8;
+    animation: beatingHeart 1.2s infinite;
+  }
+  
