@@ -243,6 +243,10 @@ button:hover {
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
     width: 100%;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 10
 }
   
 .switch {
@@ -290,8 +294,12 @@ button:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f8c8dc; /* Màu hồng nhạt */
+    background-color: #f8c8dc;
     transition: all 0.4s;
+    border-radius: 30px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    -webkit-border-radius: 30px;
     border-radius: 30px;
 }
   
@@ -302,7 +310,7 @@ button:hover {
     transform: translate(-50%, -50%);
     font-weight: 600;
     transition: all 0.4s;
-    color: #fff; /* Màu chữ trắng */
+    color: #fff;
     user-select: none;
 }
   
@@ -314,6 +322,10 @@ button:hover {
     position: absolute;
     left: -1px;
     transition: 0.4s;
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
   
 .switch .slider .ball .icon {
