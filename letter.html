@@ -48,6 +48,7 @@
     </div>
 
     <script>
+        // Mở thư
         function openLetter() {
             const letter = document.querySelector('.letter');
             const insideLetter = document.getElementById('insideLetter');
@@ -65,39 +66,46 @@
             }, 600);
         }
 
+        // Xử lý bật/tắt switch
         function handleSwitch() {
             const switchToggle = document.getElementById('switchToggle');
             const switchTitle = document.getElementById('switchTitle');
 
             if (switchToggle.checked) {
-                // Khi bật: Cập nhật chữ và lưu trạng thái
+                // Khi bật: Đổi chữ và lưu trạng thái
                 switchTitle.textContent = 'Đà Lạt';
                 localStorage.setItem('switchState', 'on');
 
-                // Chuyển đến trang mới
+                // Chuyển sang trang mới sau 0.5 giây
                 setTimeout(() => {
-                    window.location.href = 'co.html'; // Chuyển trang sau khi bật
-                }, 500); // Delay 0.5 giây để người dùng thấy sự thay đổi
+                    window.location.href = 'co.html';
+                }, 500);
             } else {
-                // Khi tắt: Cập nhật chữ và lưu trạng thái
+                // Khi tắt: Đổi chữ và lưu trạng thái
                 switchTitle.textContent = 'Sài Gòn';
                 localStorage.setItem('switchState', 'off');
             }
         }
 
+        // Khôi phục trạng thái switch khi load trang
         function restoreSwitchState() {
             const switchToggle = document.getElementById('switchToggle');
             const switchTitle = document.getElementById('switchTitle');
             const savedState = localStorage.getItem('switchState');
 
             if (savedState === 'on') {
-                switchToggle.checked = true;
+                switchToggle.checked = true; // Bật switch
                 switchTitle.textContent = 'Đà Lạt';
             } else {
-                switchToggle.checked = false;
+                switchToggle.checked = false; // Tắt switch
                 switchTitle.textContent = 'Sài Gòn';
             }
         }
+
+        // Khi tải trang, đặt trạng thái mặc định
+        window.onload = () => {
+            restoreSwitchState();
+        };
     </script>
 </body>
 </html>

@@ -242,10 +242,11 @@ button:hover {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
+    width: 100%;
 }
   
 .switch {
-    font-size: 0.875rem;
+    font-size: 1rem;
     position: relative;
     display: inline-block;
     width: 9em;
@@ -322,4 +323,24 @@ button:hover {
     transform: translate(-50%, -50%);
     color: #f28ca5; /* Màu hồng pastel */
     font-size: 12px;
+}
+@media (max-width: 600px) {
+    .switch {
+        font-size: 0.8rem;
+        width: 7em;
+        height: 2.2em;
+    }
+
+    .switch .slider {
+        border-radius: 25px;
+    }
+
+    .switch .slider .ball {
+        height: 30px;
+        width: 30px;
+    }
+
+    .switch .slider .title {
+        font-size: 0.9rem; /* Điều chỉnh kích thước chữ */
+    }
 }
