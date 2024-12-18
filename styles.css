@@ -333,7 +333,7 @@ button:hover {
     top: 58%;
     left: 53%;
     transform: translate(-50%, -50%);
-    color: #f28ca5; /* Màu hồng pastel */
+    color: #f28ca5;
     font-size: 12px;
 }
 @media (max-width: 600px) {
